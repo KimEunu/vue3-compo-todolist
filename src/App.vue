@@ -1,11 +1,11 @@
-<script setup></script>
+<script setup>
+import layoutVue from './components/layout/layout.vue'
+
+
+</script>
 
 <template>
-  <header>
-    <div class=""></div>
-  </header>
-
-  <main></main>
+  <layoutVue />
 </template>
 
 <style scoped></style>
