@@ -42,4 +42,16 @@ import UnlockIcon from '../icon/unlock-icon.vue'
 .logout:active {
   transform: scale(0.9);
 }
+@media (max-width: 46rem) {
+  .login {
+    margin: 0;
+    margin-right: 1rem;
+    align-self: center;
+  }
+  .logout {
+    margin: 0;
+    margin-right: 1rem;
+    align-self: center;
+  }
+}
 </style>

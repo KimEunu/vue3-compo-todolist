@@ -52,26 +52,23 @@ import selectbox from '../ui/selectbox.vue'
   cursor: pointer;
 }
 
-.main_nav {
-  display: flex;
-  flex-direction: column;
-  font-size: 0.85rem;
-  color: var(--color-main-orange-white);
-  margin: 0 auto;
-  text-align: left;
-}
-.main_nav h2 {
-  width: 3.2rem;
-  height: 2rem;
-}
-.main_nav h2::before {
-  position: relative;
-  top: 2.1rem;
-  left: 1.5rem;
-  content: ' ';
-  border: 1px solid var(--color-main-orange-harder);
-}
-.main_nav h2:last-child::before {
-  display: none;
+@media (max-width: 46rem) {
+  #main_header {
+    width: 100vw;
+    height: 2.4rem;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    background: linear-gradient(
+      to right,
+      var(--color-main-orange-harder),
+      var(--color-main-orange),
+      var(--color-main-orange-harder)
+    );
+  }
+  .main_header_logo {
+    line-height: 2.6rem;
+    margin: 0rem;
+  }
 }
 </style>
