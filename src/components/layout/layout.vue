@@ -14,6 +14,6 @@ import headerVue from './header.vue'
   width: 100vw;
   height: 100vh;
   background: var(--color-main-orange-white);
-
+  touch-action: none;
 }
 </style>

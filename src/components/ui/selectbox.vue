@@ -7,6 +7,12 @@ const classOut = () => {
     selectButton.isGrabbing = false
   }, 99)
 }
+const dragStart = () => {
+  selectButton.isGrabbing = true
+}
+const clickStart = () => {
+  selectButton.isGrabbing = !selectButton.isGrabbing
+}
 
 const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
 </script>
@@ -15,18 +21,16 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
     <div
       class="select_button_foreground"
       draggable="true"
-      @dragstart="
-        () => {
-          selectButton.isGrabbing = true
-        }
-      "
+      @dragstart="dragStart"
       @dragend="classOut"
+      @click="clickStart"
     />
-    <selectedwheel :is-grabbing="selectButton.isGrabbing" />
+    <selectedwheel :is-grabbing="selectButton.isGrabbing" @class-out="classOut" />
   </div>
 </template>
 <style scoped>
 .select_button_background {
+  z-index: 5;
   position: absolute;
   left: calc(50% - 1.5rem);
   width: 3rem;
@@ -36,6 +40,7 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   background-color: var(--color-main-orange-softer);
 }
 .select_button_foreground {
+  z-index: 5;
   box-sizing: border-box;
   background: conic-gradient(
     var(--color-main-orange-hard),

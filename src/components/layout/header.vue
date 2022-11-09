@@ -34,6 +34,7 @@ import selectbox from '../ui/selectbox.vue'
   box-shadow: 0.25rem 0rem 1rem var(--color-shadow-hard);
 }
 .main_header_logo {
+  user-select: none;
   text-align: center;
   margin: 0rem auto;
   width: 3rem;
