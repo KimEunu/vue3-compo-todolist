@@ -13,7 +13,7 @@ const emit = defineEmits<{
 <style scoped>
 button {
   font: inherit;
-  height: 60%;
+  height: 100%;
   width: 3rem;
   border: none;
   outline: 1px solid white;

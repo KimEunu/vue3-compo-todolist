@@ -44,6 +44,7 @@ const userInputBody = ref()
   padding: 0 0.35rem;
   align-items: center;
   border-radius: 0.6rem;
+  padding-right: 0;
 }
 @media (min-width: 46rem) {
   #add-form {

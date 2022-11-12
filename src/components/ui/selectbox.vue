@@ -25,7 +25,10 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
       @dragend="classOut"
       @click="clickStart"
     />
-    <selectedwheel :is-grabbing="selectButton.isGrabbing" @class-out="classOut" />
+    <selectedwheel
+      :is-grabbing="selectButton.isGrabbing"
+      @class-out="classOut"
+    />
   </div>
 </template>
 <style scoped>
@@ -37,17 +40,17 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   height: 3rem;
   margin: 0 auto;
   border-radius: 50%;
-  background-color: var(--color-main-orange-softer);
+  background-color: var(--color-highlight-yellow);
 }
 .select_button_foreground {
-  z-index: 5;
+  z-index: 6;
   box-sizing: border-box;
   background: conic-gradient(
-    var(--color-main-orange-hard),
-    var(--color-main-orange-soft),
     var(--color-main-orange-harder),
-    var(--color-main-orange-soft),
-    var(--color-main-orange-hard)
+    var(--color-highlight-yellow),
+    var(--color-main-orange-harder),
+    var(--color-highlight-yellow),
+    var(--color-main-orange-harder)
   );
   width: 2.2rem;
   height: 2.2rem;
@@ -55,7 +58,6 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   top: 0.4rem;
   left: 0.4rem;
   border-radius: 50%;
-  box-shadow: 0 0 2px var(--color-shadow-hard);
   cursor: grab;
 }
 

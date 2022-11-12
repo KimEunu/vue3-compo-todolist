@@ -1,7 +1,9 @@
 <script setup>
-import { auth } from '../../store/auth'
+import { useAuthStore } from '../../store/authStore'
 import LockIcon from '../icon/lock-icon.vue'
 import UnlockIcon from '../icon/unlock-icon.vue'
+
+const auth = useAuthStore()
 </script>
 <template>
   <div :class="auth.isLogin ? 'logout' : 'login'" @click="auth.loginLogout()">

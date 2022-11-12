@@ -2,14 +2,13 @@
 :root {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
-  --color-main-orange: #fd691f;
-  --color-main-orange-soft: #fd841f;
-  --color-main-orange-softer: #ff954a;
-  --color-main-orange-white: #fffdf9;
-  --color-main-orange-hard: #e14d2a;
-  --color-main-orange-harder: #e33a14;
+  --color-main-orange: #ff833c;
+  --color-main-orange-soft: #ff8c49;
+  --color-main-orange-softer: #ff9457;
+  --color-main-orange-white: #ffe0cd;
+  --color-main-orange-hard: #ff9661;
+  --color-main-orange-harder: #ff7530;
   --color-highlight-yellow: #ffcc74;
-  --color-highlight-yellow-hard: #FAC213;
   --color-shadow-soft: #ededed;
   --color-shadow-hard: #3232327c;
 }

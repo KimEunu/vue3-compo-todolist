@@ -2,7 +2,6 @@
 const props = defineProps(['isGrabbing'])
 const emit = defineEmits(['classOut'])
 const selected = (event) => {
-  console.log(event.target.textContent)
   emit('classOut')
 }
 const canSelected = (event) => {
@@ -31,56 +30,55 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
 </template>
 <style scoped>
 .select_button_wheel {
-  z-index: -1;
+  z-index: 4;
   position: absolute;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  top: calc(50% - 13rem);
-  left: -13.8rem;
-  width: 23rem;
-  height: 26rem;
+  justify-content: space-evenly;
+  top: calc(50% - 8rem);
+  left: -8rem;
+  width: 16rem;
+  height: 16rem;
   background: radial-gradient(
-    var(--color-main-orange-softer),
-    var(--color-main-orange),
-    var(--color-main-orange-harder)
+    var(--color-highlight-yellow),
+    var(--color-main-orange-hard)
   );
   user-select: none;
   border-radius: 0 50% 50% 0;
   animation: wheel 500ms forwards;
-  padding: 0.25rem 0;
   box-shadow: 0 0 10px 0px var(--color-shadow-hard);
 }
 
 .select_button_wheel h2 {
+  font-size: 1.3rem;
   user-select: none;
   position: relative;
-  top: calc(50% - 13rem);
+  top: calc(50% - 8rem);
   z-index: 2;
-  color: rgb(255, 235, 215);
+  color: white;
   text-align: center;
   margin: 0 auto;
-  height: 2.6rem;
-  width: 14rem;
-  line-height:2.6rem;
+  height: 1.3rem;
+  width: 12rem;
+  line-height: 1.3rem;
 }
 .select_button_wheel h2:hover {
   text-shadow: 0 0 px var(--color-shadow-soft);
 }
 .select_button_wheel h2:first-child,
 .select_button_wheel h2:last-child {
-  left: 3.6rem;
+  left: 1.6rem;
 }
 .select_button_wheel h2:nth-child(2),
 .select_button_wheel h2:nth-child(6) {
-  left: 5.6rem;
+  left: 3.4rem;
 }
 .select_button_wheel h2:nth-child(3),
 .select_button_wheel h2:nth-child(5) {
-  left: 7.6rem;
+  left: 5rem;
 }
 .select_button_wheel h2:nth-child(4) {
-  left: 8.2rem;
+  left: 5.4rem;
 }
 @keyframes wheel {
   0% {
@@ -99,13 +97,13 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   }
   100% {
     visibility: visible;
-    transform: scaleX(-0.8) scaleY(0.8) rotate(90deg);
+    transform: scaleX(-1) scaleY(1) rotate(90deg);
   }
 }
 @media (max-width: 46rem) {
   .select_button_wheel {
-    top: -13rem;
-    left: calc(50% - 12rem);
+    top: -8rem;
+    left: calc(50% - 8rem);
     transform: rotate(90deg);
     animation: sWheel 500ms forwards;
   }

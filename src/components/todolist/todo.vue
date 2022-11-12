@@ -21,7 +21,7 @@ const formSubmitHandler = (time, body) => {
     @form-submit-handler="formSubmitHandler"
     :inputerror="error.inputEmpty"
   />
-  <div v-for="(item, index) in todo" :key="index">
+  <section v-for="(item, index) in todo" :key="index">
     <TodoitemVue :time="item.time" :content="item.content" />
-  </div>
+  </section>
 </template>

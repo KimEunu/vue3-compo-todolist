@@ -17,7 +17,7 @@ import todoVue from '../todolist/todo.vue'
   padding: 4rem;
   width: calc(100vw - 8rem);
   height: calc(100vh - 8rem);
-  background: var(--color-main-orange-white);
+  background: linear-gradient(45deg, #f6d365, #fda085);
   touch-action: none;
 }
 </style>
