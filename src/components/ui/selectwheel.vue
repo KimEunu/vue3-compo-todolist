@@ -36,13 +36,14 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  top: calc(50% - 12rem);
+  top: calc(50% - 13rem);
   left: -13.8rem;
-  width: 24rem;
-  height: 24rem;
+  width: 23rem;
+  height: 26rem;
   background: radial-gradient(
     var(--color-main-orange-softer),
-    var(--color-main-orange-hard)
+    var(--color-main-orange),
+    var(--color-main-orange-harder)
   );
   user-select: none;
   border-radius: 0 50% 50% 0;
@@ -54,21 +55,21 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
 .select_button_wheel h2 {
   user-select: none;
   position: relative;
-  top: calc(50% - 12rem);
+  top: calc(50% - 13rem);
   z-index: 2;
   color: rgb(255, 235, 215);
   text-align: center;
   margin: 0 auto;
-  height: 3rem;
+  height: 2.6rem;
   width: 14rem;
-  line-height: 3rem;
+  line-height:2.6rem;
 }
 .select_button_wheel h2:hover {
-  text-shadow: 0 0 7px var(--color-shadow-soft);
+  text-shadow: 0 0 px var(--color-shadow-soft);
 }
 .select_button_wheel h2:first-child,
 .select_button_wheel h2:last-child {
-  left: 3.2rem;
+  left: 3.6rem;
 }
 .select_button_wheel h2:nth-child(2),
 .select_button_wheel h2:nth-child(6) {

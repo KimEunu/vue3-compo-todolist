@@ -1,11 +1,9 @@
 <script setup>
-import layoutVue from './components/layout/layout.vue'
-
-
+import LayoutVue from './components/layout/layout.vue'
 </script>
 
 <template>
-  <layoutVue />
+  <LayoutVue />
 </template>
 
 <style scoped></style>
