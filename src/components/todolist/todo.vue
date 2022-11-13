@@ -21,7 +21,22 @@ const formSubmitHandler = (time, body) => {
     @form-submit-handler="formSubmitHandler"
     :inputerror="error.inputEmpty"
   />
-  <section v-for="(item, index) in todo" :key="index">
-    <TodoitemVue :time="item.time" :content="item.content" />
+  <section>
+    <div v-for="(item, index) in todo" :key="index">
+      <TodoitemVue :time="item.time" :content="item.content" />
+    </div>
   </section>
 </template>
+
+<style scoped>
+section {
+  height: 95%;
+  width: 100%;
+  overflow: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+section::-webkit-scrollbar {
+  display: none;
+}
+</style>

@@ -1,7 +1,10 @@
 <script setup>
+import { useTodoStore } from '../../store/todoStore'
+const todo = useTodoStore()
 const props = defineProps(['isGrabbing'])
 const emit = defineEmits(['classOut'])
 const selected = (event) => {
+  todo.setDay(event.target.textContent)
   emit('classOut')
 }
 const canSelected = (event) => {
@@ -12,7 +15,9 @@ const leaveSelected = (event) => {
   event.preventDefault()
   // event.target.style.
 }
-const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+// const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
+const weekday = '월화수목금토일'
+const week = [...weekday.split('')]
 </script>
 <template>
   <div v-if="props.isGrabbing" class="select_button_wheel">
@@ -39,10 +44,7 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   left: -8rem;
   width: 16rem;
   height: 16rem;
-  background: radial-gradient(
-    var(--color-highlight-yellow),
-    var(--color-main-orange-hard)
-  );
+  background: radial-gradient(var(--color-highlight), var(--color-main-bri));
   user-select: none;
   border-radius: 0 50% 50% 0;
   animation: wheel 500ms forwards;
@@ -67,11 +69,11 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
 }
 .select_button_wheel h2:first-child,
 .select_button_wheel h2:last-child {
-  left: 1.6rem;
+  left: 1.8rem;
 }
 .select_button_wheel h2:nth-child(2),
 .select_button_wheel h2:nth-child(6) {
-  left: 3.4rem;
+  left: 3.6rem;
 }
 .select_button_wheel h2:nth-child(3),
 .select_button_wheel h2:nth-child(5) {

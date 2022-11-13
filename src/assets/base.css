@@ -2,19 +2,28 @@
 :root {
   font-family: "Noto Sans KR", sans-serif;
   font-size: 16px;
-  --color-main-orange: #ff833c;
-  --color-main-orange-soft: #ff8c49;
-  --color-main-orange-softer: #ff9457;
-  --color-main-orange-white: #ffe0cd;
-  --color-main-orange-hard: #ff9661;
-  --color-main-orange-harder: #ff7530;
-  --color-highlight-yellow: #ffcc74;
+  --color-main-bri: #01add1;
+  --color-main-bg: linear-gradient(45deg, #82e4d8, #16d6e4);
+  --color-header-bg: #51cdd7;
+  --color-highlight: #e6fde0;
+  --color-white: #e9fff9;
   --color-shadow-soft: #ededed;
   --color-shadow-hard: #3232327c;
 }
-
 body {
   box-sizing: content-box;
   margin: 0;
   padding: 0;
+  background: var(--color-main-bg);
+  
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-main-bri: #ff7530;
+    --color-main-bg: linear-gradient(45deg, #f6d365, #fda085);
+    --color-header-bg: #ff9457;
+    --color-highlight: #ffcc74;
+    --color-white: #fffeeb;
+  }
 }

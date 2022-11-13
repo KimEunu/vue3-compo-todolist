@@ -25,12 +25,7 @@ import selectbox from '../ui/selectbox.vue'
   padding: 0.5rem 0.15rem;
   width: 3.4rem;
   height: 100vh;
-  background: linear-gradient(
-    to bottom,
-    var(--color-main-orange-harder),
-    var(--color-main-orange),
-    var(--color-main-orange-harder)
-  );
+  background: var(--color-header-bg);
   box-shadow: 0.25rem 0rem 1rem var(--color-shadow-hard);
 }
 .main_header_logo {
@@ -60,12 +55,7 @@ import selectbox from '../ui/selectbox.vue'
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    background: linear-gradient(
-      to right,
-      var(--color-main-orange-harder),
-      var(--color-main-orange),
-      var(--color-main-orange-harder)
-    );
+    background: var(--color-header-bg);
   }
   .main_header_logo {
     line-height: 2.6rem;

@@ -40,17 +40,17 @@ const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
   height: 3rem;
   margin: 0 auto;
   border-radius: 50%;
-  background-color: var(--color-highlight-yellow);
+  background-color: var(--color-white);
 }
 .select_button_foreground {
   z-index: 6;
   box-sizing: border-box;
   background: conic-gradient(
-    var(--color-main-orange-harder),
-    var(--color-highlight-yellow),
-    var(--color-main-orange-harder),
-    var(--color-highlight-yellow),
-    var(--color-main-orange-harder)
+    var(--color-main-bri),
+    var(--color-highlight),
+    var(--color-main-bri),
+    var(--color-highlight),
+    var(--color-main-bri)
   );
   width: 2.2rem;
   height: 2.2rem;

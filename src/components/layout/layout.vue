@@ -14,10 +14,19 @@ import todoVue from '../todolist/todo.vue'
 
 <style scoped>
 #main_content {
-  padding: 4rem;
-  width: calc(100vw - 8rem);
-  height: calc(100vh - 8rem);
-  background: linear-gradient(45deg, #f6d365, #fda085);
+  padding: 1rem;
+  padding-left: 4rem;
+  width: calc(100vw - 5rem);
+  height: calc(100vh - 2rem);
+
   touch-action: none;
+}
+@media (max-width: 46rem) {
+  #main_content {
+    padding: 2rem;
+    width: calc(100vw - 4rem);
+    height: calc(100vh - 4rem);
+
+  }
 }
 </style>

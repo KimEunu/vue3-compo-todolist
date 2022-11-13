@@ -37,9 +37,9 @@ const userInputBody = ref()
   justify-content: space-between;
   margin: 0 auto;
   margin-top: 2rem;
-  width: 100%;
+  width: 95%;
   height: 3rem;
-  background-color: white;
+  background-color: var(--color-white);
   box-shadow: 3px 3px 2px var(--color-shadow-hard);
   padding: 0 0.35rem;
   align-items: center;
@@ -86,13 +86,15 @@ const userInputBody = ref()
   height: 60%;
   border: none;
   border-top: 1px;
-  outline: 1px solid white;
+  outline: none;
   min-width: 7rem;
+  background-color: var(--color-white);
   border-radius: 0.35rem 0 0 0.35rem;
 }
 .user-input {
   border: none;
   outline: none;
+  background-color: var(--color-white);
   width: 100%;
   height: 60%;
 }
