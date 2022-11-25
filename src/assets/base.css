@@ -6,6 +6,7 @@
   --color-main-bg: linear-gradient(45deg, #82e4d8, #16d6e4);
   --color-header-bg: #51cdd7;
   --color-highlight: #e6fde0;
+  --color-highlight-hard: #009ec5;
   --color-white: #e9fff9;
   --color-shadow-soft: #ededed;
   --color-shadow-hard: #3232327c;
@@ -15,7 +16,6 @@ body {
   margin: 0;
   padding: 0;
   background: var(--color-main-bg);
-  
 }
 
 @media (prefers-color-scheme: dark) {
@@ -24,6 +24,7 @@ body {
     --color-main-bg: linear-gradient(45deg, #f6d365, #fda085);
     --color-header-bg: #ff9457;
     --color-highlight: #ffcc74;
+    --color-highlight-hard: #ff760e;
     --color-white: #fffeeb;
   }
 }

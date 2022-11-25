@@ -1,15 +1,11 @@
 <script setup>
-import { useTodoStore } from '../../store/todoStore'
-const todo = useTodoStore()
-const props = defineProps(['time', 'content'])
+const props = defineProps(['time', 'content', 'day'])
 const dayTime = props.time.split('').slice(0, 2).join('')
 </script>
 
 <template>
   <div class="todoitem">
-    <span class="day">
-      {{ todo.day }}요일
-    </span>
+    <span class="day">{{ props.day }}요일</span>
     <span v-if="12 > dayTime > 0">오전</span>
     <span v-else>오후</span>
     <time>

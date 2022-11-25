@@ -15,7 +15,6 @@ const leaveSelected = (event) => {
   event.preventDefault()
   // event.target.style.
 }
-// const week = ['Mon', 'Tue', 'Wed', 'Thur', 'Fri', 'Sat', 'Sun']
 const weekday = '월화수목금토일'
 const week = [...weekday.split('')]
 </script>
@@ -44,7 +43,7 @@ const week = [...weekday.split('')]
   left: -8rem;
   width: 16rem;
   height: 16rem;
-  background: radial-gradient(var(--color-highlight), var(--color-main-bri));
+  background: var(--color-white);
   user-select: none;
   border-radius: 0 50% 50% 0;
   animation: wheel 500ms forwards;
@@ -57,7 +56,7 @@ const week = [...weekday.split('')]
   position: relative;
   top: calc(50% - 8rem);
   z-index: 2;
-  color: white;
+  color: var(--color-main-bri);
   text-align: center;
   margin: 0 auto;
   height: 1.3rem;
@@ -73,7 +72,7 @@ const week = [...weekday.split('')]
 }
 .select_button_wheel h2:nth-child(2),
 .select_button_wheel h2:nth-child(6) {
-  left: 3.6rem;
+  left: 4rem;
 }
 .select_button_wheel h2:nth-child(3),
 .select_button_wheel h2:nth-child(5) {

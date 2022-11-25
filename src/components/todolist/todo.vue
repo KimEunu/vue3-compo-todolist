@@ -3,16 +3,17 @@ import addlistVue from '../todolist/addlist.vue'
 import { reactive } from 'vue'
 import TodoitemVue from './todoitem.vue'
 
+
 const error = reactive({ inputEmpty: false })
 const todo = reactive([])
-const formSubmitHandler = (time, body) => {
+const formSubmitHandler = (time, body, weekday) => {
   if (!time || !body) {
     error.inputEmpty = true
     setTimeout(() => {
       error.inputEmpty = false
     }, 750)
   } else {
-    todo.push({ time: time, content: body })
+    todo.push({ time: time, content: body, day: weekday })
   }
 }
 </script>
@@ -23,9 +24,10 @@ const formSubmitHandler = (time, body) => {
   />
   <section>
     <div v-for="(item, index) in todo" :key="index">
-      <TodoitemVue :time="item.time" :content="item.content" />
+      <TodoitemVue :time="item.time" :content="item.content" :day="item.day" />
     </div>
   </section>
+
 </template>
 
 <style scoped>
