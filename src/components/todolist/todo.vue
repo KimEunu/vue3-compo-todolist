@@ -1,21 +1,22 @@
 <script setup>
-import addlistVue from '../todolist/addlist.vue'
-import { reactive } from 'vue'
-import TodoitemVue from './todoitem.vue'
+import addlistVue from "../todolist/addlist.vue";
+import { reactive } from "vue";
+import TodoitemVue from "./todoitem.vue";
+import { useTodoStore } from "../../store/todoStore.mjs";
 
+const todoStore = useTodoStore();
+const error = reactive({ inputEmpty: false });
 
-const error = reactive({ inputEmpty: false })
-const todo = reactive([])
 const formSubmitHandler = (time, body, weekday) => {
   if (!time || !body) {
-    error.inputEmpty = true
+    error.inputEmpty = true;
     setTimeout(() => {
-      error.inputEmpty = false
-    }, 750)
+      error.inputEmpty = false;
+    }, 750);
   } else {
-    todo.push({ time: time, content: body, day: weekday })
+    todoStore.setTodo(time, body, weekday);
   }
-}
+};
 </script>
 <template>
   <addlistVue
@@ -23,11 +24,10 @@ const formSubmitHandler = (time, body, weekday) => {
     :inputerror="error.inputEmpty"
   />
   <section>
-    <div v-for="(item, index) in todo" :key="index">
-      <TodoitemVue :time="item.time" :content="item.content" :day="item.day" />
+    <div v-for="(item, index) in todoStore.todo.list" :key="index">
+      <TodoitemVue :date="item.date" :content="item.content" :day="item.day" />
     </div>
   </section>
-
 </template>
 
 <style scoped>

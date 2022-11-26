@@ -1,6 +1,11 @@
 <script setup>
-const props = defineProps(['time', 'content', 'day'])
-const dayTime = props.time.split('').slice(0, 2).join('')
+const props = defineProps(["date", "content", "day"]);
+const dayTime = props.date.getHours();
+const hour =
+  props.date.getHours() > 12
+    ? props.date.getHours() - 12
+    : props.date.getHours();
+const minutes = props.date.getMinutes();
 </script>
 
 <template>
@@ -9,7 +14,7 @@ const dayTime = props.time.split('').slice(0, 2).join('')
     <span v-if="12 > dayTime > 0">오전</span>
     <span v-else>오후</span>
     <time>
-      {{ props.time }}
+      {{ props.time }}{{ hour }}시 {{minutes}}분
     </time>
     <div class="todoitem-content">{{ props.content }}</div>
   </div>

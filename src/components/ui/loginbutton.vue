@@ -1,5 +1,5 @@
 <script setup>
-import { useAuthStore } from '../../store/authStore'
+import { useAuthStore } from '../../store/authStore.mjs'
 import LockIcon from '../icon/lock-icon.vue'
 import UnlockIcon from '../icon/unlock-icon.vue'
 

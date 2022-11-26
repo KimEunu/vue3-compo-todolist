@@ -1,5 +1,5 @@
 <script setup>
-import { useTodoStore } from '../../store/todoStore'
+import { useTodoStore } from '../../store/todoStore.mjs'
 const todo = useTodoStore()
 const props = defineProps(['isGrabbing'])
 const emit = defineEmits(['classOut'])
