@@ -24,7 +24,7 @@ const formSubmitHandler = (time, body, weekday) => {
     :inputerror="error.inputEmpty"
   />
   <section>
-    <div v-for="(item, index) in todoStore.todo.list" :key="index">
+    <div v-for="(item, index) in todoStore.todo" :key="index">
       <TodoitemVue :date="item.date" :content="item.content" :day="item.day" />
     </div>
   </section>

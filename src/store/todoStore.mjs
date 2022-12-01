@@ -2,7 +2,7 @@ import { defineStore } from "pinia";
 import { ref, reactive } from "vue";
 
 export const useTodoStore = defineStore("todo", () => {
-  const todo = reactive({ list: [] });
+  const todo = ref([]);
   const day = ref("ALL");
 
   function setTodo(time, content, day) {
