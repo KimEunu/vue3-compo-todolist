@@ -1,27 +1,32 @@
 <script setup>
-import { useTodoStore } from '../../store/todoStore.mjs'
-const todo = useTodoStore()
-const props = defineProps(['isGrabbing'])
-const emit = defineEmits(['classOut'])
+import { useTodoStore } from "../../store/todoStore.mjs";
+import arrowcounterIconVue from "../icon/arrowcounter-icon.vue";
+import trashcanIconVue from "../icon/trashcan-icon.vue";
+import pencilIconVue from "../icon/pencil-icon.vue";
+const todoStore = useTodoStore();
+const props = defineProps(["isGrabbing"]);
+const emit = defineEmits(["classOut"]);
 const selected = (event) => {
-  todo.setDay(event.target.textContent)
-  emit('classOut')
-}
+  const mode = event.currentTarget.id;
+  todoStore.pageMode = mode;
+  emit("classOut");
+};
 const canSelected = (event) => {
-  event.preventDefault()
+  event.preventDefault();
+  todoStore.pageMode = 'normal';
   // event.target.style.
-}
+};
 const leaveSelected = (event) => {
-  event.preventDefault()
+  event.preventDefault();
   // event.target.style.
-}
-const weekday = '월화수목금토일'
-const week = [...weekday.split('')]
+};
+// const weekday = '월화수목금토일'
+// const week = [...weekday.split('')]
 </script>
 <template>
   <div v-if="props.isGrabbing" class="select_button_wheel">
-    <h2
-      v-for="(day, index) in week"
+    <!-- <h2
+      v-for="(day, index) in icons"
       :key="index"
       @drop="selected"
       @dragover="canSelected"
@@ -29,6 +34,33 @@ const week = [...weekday.split('')]
       @click="selected"
     >
       {{ day }}
+    </h2> -->
+    <h2
+      id="normal"
+      @drop="selected"
+      @dragover="canSelected"
+      @dragleave="leaveSelected"
+      @click="selected"
+    >
+      <arrowcounterIconVue />
+    </h2>
+    <h2
+      id="edit"
+      @drop="selected"
+      @dragover="canSelected"
+      @dragleave="leaveSelected"
+      @click="selected"
+    >
+      <pencilIconVue />
+    </h2>
+    <h2
+      id="delete"
+      @drop="selected"
+      @dragover="canSelected"
+      @dragleave="leaveSelected"
+      @click="selected"
+    >
+      <trashcanIconVue />
     </h2>
   </div>
 </template>
@@ -60,26 +92,19 @@ const week = [...weekday.split('')]
   text-align: center;
   margin: 0 auto;
   height: 1.3rem;
-  width: 12rem;
+  width: 1.3rem;
   line-height: 1.3rem;
+  cursor: pointer;
 }
 .select_button_wheel h2:hover {
   text-shadow: 0 0 px var(--color-shadow-soft);
 }
 .select_button_wheel h2:first-child,
 .select_button_wheel h2:last-child {
-  left: 1.8rem;
-}
-.select_button_wheel h2:nth-child(2),
-.select_button_wheel h2:nth-child(6) {
   left: 4rem;
 }
-.select_button_wheel h2:nth-child(3),
-.select_button_wheel h2:nth-child(5) {
-  left: 5rem;
-}
-.select_button_wheel h2:nth-child(4) {
-  left: 5.4rem;
+.select_button_wheel h2:nth-child(2) {
+  left: 6rem;
 }
 @keyframes wheel {
   0% {
@@ -110,7 +135,7 @@ const week = [...weekday.split('')]
   }
 
   .select_button_wheel h2 {
-    transform: scaleY(-1) rotate(180deg);
+    transform: scaleY(-1) rotate(-90deg);
   }
 }
 </style>

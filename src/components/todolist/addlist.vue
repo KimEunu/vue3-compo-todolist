@@ -1,24 +1,23 @@
 <script setup lang="ts">
-import addbuttonVue from '../ui/addbutton.vue'
-import { useTodoStore } from '../../store/todoStore.mjs'
-import { ref } from 'vue'
+import addbuttonVue from "../ui/addbutton.vue";
+import { useTodoStore } from "../../store/todoStore.mjs";
+import { ref } from "vue";
 
-const todo = useTodoStore()
+const todo = useTodoStore();
 const emit = defineEmits<{
-  (e: 'formSubmitHandler', time: string, body: string, weekday: string, ): void
-}>()
-const props = defineProps<{ inputerror: boolean }>()
+  (e: "formSubmitHandler", time: string, body: string): void;
+}>();
+const props = defineProps<{ inputerror: boolean }>();
 function formSubmitHandler() {
   emit(
-    'formSubmitHandler',
+    "formSubmitHandler",
     userInputTime.value.value,
-    userInputBody.value.value,
-    todo.day,
-  )
+    userInputBody.value.value
+  );
 }
 
-const userInputTime = ref()
-const userInputBody = ref()
+const userInputTime = ref();
+const userInputBody = ref();
 </script>
 
 <template>

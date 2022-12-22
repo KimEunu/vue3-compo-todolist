@@ -1,70 +1,55 @@
 import { defineStore } from "pinia";
-import { ref, reactive } from "vue";
+import { ref } from "vue";
 
 export const useTodoStore = defineStore("todo", () => {
   const todo = ref([]);
-  const day = ref("ALL");
-
-  function setTodo(time, content, day) {
-    let date;
-    if (day === "월") {
-      date = new Date(
-        2022,
-        10,
-        7,
-        +time.split("").slice(0, 2).join(""),
-        +time.split("").slice(3, 5).join(""),
-        0
-      );
+  const pageMode = ref("normal");
+  async function setTodo(time, content, id) {
+    let response;
+    try {
+      response = await fetch("https://xn--3h3bz1pi5a.me/api", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ time: time, text: content }),
+      });
+    } catch (error) {
+      throw error;
     }
-    todo.list.push({ date: date, content: content, day: day });
+    if (!response.ok) {
+      console.log("Response Not Ok!");
+      return;
+    } else {
+      const responseData = await response.json();
+      todo.value.push({ time: time, text: content, id: responseData.savedId });
+    }
   }
-  function setDay(dayOfWeek) {
-    day.value = dayOfWeek;
+  async function getAlltodos() {
+    try {
+      const response = await fetch("https://xn--3h3bz1pi5a.me/api");
+      const responseData = await response.json();
+      todo.value = [...responseData.todos];
+    } catch (error) {
+      throw error;
+    }
   }
-  function sortTodo() {
-    const merge = (firstArray, secondArray) => {
-      let firstArrayIndex = 0;
-      let secondArrayIndex = 0;
-      const tempArray = [];
-      while (
-        firstArrayIndex < firstArray.length &&
-        secondArrayIndex < secondArray.length
-      ) {
-        if (
-          firstArray[firstArrayIndex].date > secondArray[secondArrayIndex].date
-        ) {
-          tempArray.push(secondArray[secondArrayIndex]);
-          secondArrayIndex++;
-        } else if (
-          firstArray[firstArrayIndex].date < secondArray[secondArrayIndex].date
-        ) {
-          tempArray.push(firstArray[firstArrayIndex]);
-          firstArrayIndex++;
-        }
-        while (firstArrayIndex < firstArray.length) {
-          tempArray.push(firstArray[firstArrayIndex]);
-          firstArrayIndex++;
-        }
-        while (secondArrayIndex < secondArray.length) {
-          tempArray.push(secondArray[secondArrayIndex]);
-          secondArrayIndex++;
-        }
-        return tempArray;
-      }
-    };
-    const mergeSort = (array) => {
-      if (array.length <= 1) return array;
-      let center = Math.floor(array.length / 2);
-      let left = mergeSort(array.slice(0, center));
-      let rigth = mergeSort(array.slice(center));
-      return merge(left, rigth);
-    };
-    const temp = [...todo.list];
-    console.log(todo.list);
+
+  async function deleteTodos(id) {
+    let response;
+    try {
+      response = await fetch("https://xn--3h3bz1pi5a.me/api" + id, {
+        method: "DELETE",
+      });
+    } catch (error) {
+      throw error;
+    }
+    if (!response.ok) {
+      console.log("Response Not Ok!");
+    } else {
+      const temp = todo.value.filter((todo) => {
+        return todo.id !== id;
+      });
+      todo.value = [...temp];
+    }
   }
-  function save() {
-    console.log(todo.list);
-  }
-  return { todo, setTodo, day, setDay, sortTodo, save };
+  return { todo, pageMode, setTodo, getAlltodos, deleteTodos };
 });

@@ -1,22 +1,29 @@
 <script setup>
 import addlistVue from "../todolist/addlist.vue";
-import { reactive } from "vue";
+import { reactive, onMounted } from "vue";
 import TodoitemVue from "./todoitem.vue";
 import { useTodoStore } from "../../store/todoStore.mjs";
 
 const todoStore = useTodoStore();
 const error = reactive({ inputEmpty: false });
 
-const formSubmitHandler = (time, body, weekday) => {
+const formSubmitHandler = (time, body) => {
   if (!time || !body) {
     error.inputEmpty = true;
     setTimeout(() => {
       error.inputEmpty = false;
     }, 750);
   } else {
-    todoStore.setTodo(time, body, weekday);
+    todoStore.setTodo(time, body);
   }
 };
+
+const deleteHandler = (id) => {
+  todoStore.deleteTodos(id);
+};
+onMounted(() => {
+  todoStore.getAlltodos();
+});
 </script>
 <template>
   <addlistVue
@@ -25,7 +32,12 @@ const formSubmitHandler = (time, body, weekday) => {
   />
   <section>
     <div v-for="(item, index) in todoStore.todo" :key="index">
-      <TodoitemVue :date="item.date" :content="item.content" :day="item.day" />
+      <TodoitemVue
+        :time="item.time"
+        :content="item.text"
+        :id="item.id"
+        @delete-Handler="deleteHandler"
+      />
     </div>
   </section>
 </template>

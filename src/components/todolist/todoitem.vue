@@ -1,22 +1,47 @@
 <script setup>
-const props = defineProps(["date", "content", "day"]);
-const dayTime = props.date.getHours();
-const hour =
-  props.date.getHours() > 12
-    ? props.date.getHours() - 12
-    : props.date.getHours();
-const minutes = props.date.getMinutes();
+import { useTodoStore } from "../../store/todoStore.mjs";
+import trashcanIconVue from "../icon/trashcan-icon.vue";
+import pencilIconVue from "../icon/pencil-icon.vue";
+const todoStore = useTodoStore();
+const emit = defineEmits(["deleteHandler"]);
+const props = defineProps(["time", "content","id"]);
+// const dayTime = props.date.getHours();
+// const hour =
+//   props.date.getHours() > 12
+//     ? props.date.getHours() - 12
+//     : props.date.getHours();
+// const minutes = props.date.getMinutes();
+
+const daytime = props.time.slice(0, 2);
+const daytimeFlow = 13 > +daytime > 0 ? true : false;
 </script>
 
 <template>
-  <div class="todoitem">
-    <span class="day">{{ props.day }}요일</span>
-    <span v-if="12 > dayTime > 0">오전</span>
+  <div class="todoitem" v-if="todoStore.pageMode === 'normal'">
+    <span v-if="daytimeFlow">오전</span>
     <span v-else>오후</span>
     <time>
-      {{ props.time }}{{ hour }}시 {{minutes}}분
+      {{ props.time }}
     </time>
     <div class="todoitem-content">{{ props.content }}</div>
+  </div>
+  <div class="todoitem" v-else-if="todoStore.pageMode === 'delete'">
+    <span v-if="daytimeFlow">오전</span>
+    <span v-else>오후</span>
+    <time>
+      {{ props.time }}
+    </time>
+    <div class="todoitem-content">{{ props.content }}</div>
+    <span @click="emit('deleteHandler', props.id)"><trashcanIconVue /></span>
+  </div>
+  <div class="todoitem" v-else-if="todoStore.pageMode === 'edit'">
+    <span v-if="daytimeFlow">오전</span>
+    <span v-else>오후</span>
+    <time>
+      {{ props.time }}
+    </time>
+    <div class="todoitem-content">{{ props.content }}</div>
+    <span><pencilIconVue /></span>
   </div>
 </template>
 

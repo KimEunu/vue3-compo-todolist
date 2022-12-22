@@ -8,7 +8,7 @@ import functionbuttonVue from '../ui/functionbutton.vue'
   <headerVue />
   <main id="main_content">
     <todoVue />
-    <functionbuttonVue />
+    <!-- <functionbuttonVue /> -->
   </main>
 
   <footer></footer>
