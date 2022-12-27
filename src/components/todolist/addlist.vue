@@ -1,35 +1,40 @@
-<script setup lang="ts">
+<script setup>
 import addbuttonVue from "../ui/addbutton.vue";
-import { useTodoStore } from "../../store/todoStore.mjs";
-import { ref } from "vue";
+import { reactive, watchEffect } from "vue";
 
-const todo = useTodoStore();
-const emit = defineEmits<{
-  (e: "formSubmitHandler", time: string, body: string): void;
-}>();
-const props = defineProps<{ inputerror: boolean }>();
+const emits = defineEmits(["formSubmitHandler"]);
+const props = defineProps(["inputerror", "editTime", "editText"]);
+const userInputReactive = reactive({ time: "", text: "" });
+watchEffect(() => {
+  userInputReactive.time = props.editTime;
+  userInputReactive.text = props.editText;
+});
 function formSubmitHandler() {
-  emit(
-    "formSubmitHandler",
-    userInputTime.value.value,
-    userInputBody.value.value
-  );
+  emits("formSubmitHandler", userInputReactive.time, userInputReactive.text);
+  userInputReactive.time = "";
+  userInputReactive.text = "";
 }
-
-const userInputTime = ref();
-const userInputBody = ref();
 </script>
 
 <template>
-  <form id="add-form" :class="[props.inputerror ? 'error' : '']">
-    <input class="user-input-time" type="time" required ref="userInputTime" />
+  <form
+    id="add-form"
+    :class="[props.inputerror ? 'error' : '']"
+    @submit.prevent="formSubmitHandler"
+  >
+    <input
+      class="user-input-time"
+      type="time"
+      required
+      v-model="userInputReactive.time"
+    />
     <input
       class="user-input"
       placeholder="목록 작성하기"
       required
-      ref="userInputBody"
+      v-model="userInputReactive.text"
     />
-    <addbuttonVue @form-submit-handler="formSubmitHandler" />
+    <addbuttonVue />
   </form>
 </template>
 

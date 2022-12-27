@@ -1,13 +1,7 @@
-<script setup lang="ts">
-const emit = defineEmits<{
-  (e: 'formSubmitHandler'): void
-}>()
-</script>
+<script setup lang="ts"></script>
 
 <template>
-  <button type="submit" @click.prevent="emit('formSubmitHandler')">
-    +
-  </button>
+  <button type="submit">+</button>
 </template>
 
 <style scoped>

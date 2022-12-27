@@ -8,12 +8,16 @@ const props = defineProps(["isGrabbing"]);
 const emit = defineEmits(["classOut"]);
 const selected = (event) => {
   const mode = event.currentTarget.id;
-  todoStore.pageMode = mode;
+  if (mode === "normal") {
+    todoStore.refresh();
+  } else {
+    todoStore.pageMode = mode;
+  }
   emit("classOut");
 };
 const canSelected = (event) => {
   event.preventDefault();
-  todoStore.pageMode = 'normal';
+  todoStore.pageMode = "normal";
   // event.target.style.
 };
 const leaveSelected = (event) => {

@@ -5,7 +5,7 @@ const selectButton = reactive({ isGrabbing: false })
 const classOut = () => {
   setTimeout(() => {
     selectButton.isGrabbing = false
-  }, 99)
+  }, 64)
 }
 const dragStart = () => {
   selectButton.isGrabbing = true
